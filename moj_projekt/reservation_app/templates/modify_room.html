@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Room</title>
+</head>
+<body>
+    <h2>Modify Room</h2>
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'modify-room' room.id %}">
+        {% csrf_token %}
+
+        <label for="name">Room Name:</label>
+        <input type="text" name="name" value="{{ room.name }}" required>
+        <br>
+
+        <label for="capacity">Capacity:</label>
+        <input type="number" name="capacity" value="{{ room.capacity }}" required>
+        <br>
+
+        <label for="projector">Projector:</label>
+        <input type="checkbox" name="projector" {% if room.projector %}checked{% endif %}>
+        <br>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>
