@@ -13,3 +13,6 @@ class ReserveRoom(models.Model):
     room_id = models.PositiveIntegerField()
     date = models.DateTimeField()
     comments = models.TextField()
+
+    class Meta:
+        unique_together = ('room_id', 'date',)

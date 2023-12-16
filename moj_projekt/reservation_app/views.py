@@ -14,7 +14,7 @@ class AddRoomView(View):
         projector = request.POST.get("projector") == "on"
 
         if not name:
-            return render(request, "add_room.html", {'error_message': 'Nie podano nawy sali'})
+            return render(request, "add_room.html", {'error_message': 'Nie podano nazwy sali'})
         try:
             capacity = int(capacity)
             if capacity <= 0:
